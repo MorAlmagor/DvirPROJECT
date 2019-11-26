@@ -1,0 +1,2 @@
+export const CHANGE_CHECK_STATUS = 'CHANGE_CHECK_STATUS';
+export const SET_USER_IMAGE = 'SET_USER_IMAGE';
