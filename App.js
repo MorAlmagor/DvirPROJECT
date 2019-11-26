@@ -17,7 +17,7 @@ const navigator = createStackNavigator({
   Map: MapScreen
 },
 {
-  initialRouteName: 'Index',
+  initialRouteName: 'Dvir',
   defaultNavigationOptions: {
     title: 'DVIR'
   }

@@ -1,7 +1,7 @@
 // import { changeCheckStatus } from '../../store/actions/formActions';
 // import { connect } from 'react-redux';
 
-import React, { useState } from 'react';
+import React from 'react';
 import {
   View,
   TextInput,
@@ -10,16 +10,14 @@ import {
   Text
 } from 'react-native';
 import { withNavigation } from 'react-navigation';
+import { getStringDate } from '../../utils/dateCreator';
 
 const FormIntroSection = ({ dvirStatus, navigation }) => {
-  const d = new Date();
-  const date = d.toString();
+  const dateString = getStringDate();
 
   // const [carrier, setCarrier] = useState(undefined);
   // const [location, setLocation] = useState(undefined);
   // const [odometer, setOdometer] = useState(undefined);
-  const [dateValue = date, onChangeDate] = useState(undefined);
-
 
   let inputSction = (
     <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
@@ -59,9 +57,9 @@ const FormIntroSection = ({ dvirStatus, navigation }) => {
         </View>
         <View>
           <TextInput
-            onChangeText={(text) => onChangeDate(text)}
-            value={dateValue}
-            placeholder={dateValue}
+            // onChangeText={(text) => onChangeDate(text)}
+            value={dateString}
+            // placeholder={dateValue}
             placeholderTextColor="grey"
             style={styles.input}
             autoCapitalize="none"
