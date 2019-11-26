@@ -36,7 +36,8 @@ const CameraScreen = ({
     if (permissions.cameraRoll) {
       const { cancelled, base64 } = await ImagePicker.launchImageLibraryAsync({
         allowsEditing: true,
-        base64: true
+        base64: true,
+        allowsMultipleSelection: false
       });
       if (!cancelled) {
         const base64Image = `data:image/png;base64,${base64}`;

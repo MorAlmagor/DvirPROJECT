@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import Form from '../components/Form/Form';
 import FormSubmission from '../components/FormSubmission/FormSubmission';
 import Modal from '../components/UI/Modals/DvirSummeryModal';
-import FormIntroSection from './../components/Form/FormIntroSection'
+import FormIntroSection from '../components/Form/FormIntroSection';
 
 const IndexScreen = (props) => {
   const cleanUpHandler = () => {
@@ -19,8 +19,8 @@ const IndexScreen = (props) => {
     setClicked(false);
     props.navigation.navigate('Index');
   };
-
-  const [modelshow, setModalShow] = useState(false);
+  
+  const [modalShow, setModalShow] = useState(false);
   const [checkBoxValue, setCheckBoxValue] = useState(false);
   const [clicked, setClicked] = useState(false);
 
@@ -29,17 +29,16 @@ const IndexScreen = (props) => {
       <View>
         <Text style={styles.title}>Pre-Trip</Text>
         {/* צריך להגדיר dvirstatus נעלאבוקקק  */}
-        <FormIntroSection nav={props} dvirStatus={false} />
+        <FormIntroSection dvirStatus={false} />
         <Form />
         <FormSubmission
           clickedHandler={setClicked}
           clicked={clicked}
-          nav={props}
           modalshowHandler={setModalShow}
           checkboxVal={checkBoxValue}
           setCheckBoxHandler={setCheckBoxValue}
         />
-        {modelshow && <Modal modalshowHandler={setModalShow} nav={props} clean={cleanUpHandler} />}
+        {modalShow && <Modal modalshowHandler={setModalShow} clean={cleanUpHandler} />}
       </View>
     </ScrollView>
   );
