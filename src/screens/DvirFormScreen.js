@@ -12,12 +12,12 @@ import FormSubmission from '../components/FormSubmission/FormSubmission';
 import Modal from '../components/UI/Modals/DvirSummeryModal';
 import FormIntroSection from '../components/Form/FormIntroSection';
 
-const IndexScreen = (props) => {
+const IndexScreen = ({ navigation, truckProperties }) => {
   const cleanUpHandler = () => {
     setModalShow(false);
     setCheckBoxValue(false);
     setClicked(false);
-    props.navigation.navigate('Index');
+    navigation.navigate('Index');
   };
   
   const [modalShow, setModalShow] = useState(false);
@@ -29,7 +29,7 @@ const IndexScreen = (props) => {
       <View>
         <Text style={styles.title}>Pre-Trip</Text>
         {/* צריך להגדיר dvirstatus נעלאבוקקק  */}
-        <FormIntroSection dvirStatus={false} />
+        <FormIntroSection truckProperties={truckProperties} dvirStatus={false} />
         <Form />
         <FormSubmission
           clickedHandler={setClicked}
@@ -53,7 +53,11 @@ const styles = StyleSheet.create({
 });
 
 IndexScreen.defaultProps = {
-  userName: 'Yaron'
+  truckProperties: {
+    carrier: 'UPS',
+    lastOdometer: '12589'
+  }
+  
 };
 
 const mapStateToProps = (state) => {

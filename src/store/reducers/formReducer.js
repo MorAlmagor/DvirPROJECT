@@ -1,6 +1,8 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
+  carrier: 'UPS',
+  lastOdometer: '551',
   truckImage: null,
   truckStatus: {
     airCompresor: {

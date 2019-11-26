@@ -11,7 +11,9 @@ export const data = {
           licenceType: '2',
           phoneNumber: '03001231213',
           mail: 'dora@gmail.com',
-          driverID: 'B1321'
+          driverID: 'B1321',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'david',
@@ -22,7 +24,9 @@ export const data = {
           licenceType: '2',
           phoneNumber: '03001231415',
           mail: 'vlidfg@gmail.com',
-          driverID: 'B1232'
+          driverID: 'B1232',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'kai',
@@ -33,7 +37,9 @@ export const data = {
           licenceType: '2',
           phoneNumber: '03001231617',
           mail: 'vavae@gmail.com',
-          driverID: 'B2121'
+          driverID: 'B2121',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'rafi',
@@ -44,7 +50,9 @@ export const data = {
           licenceType: '1',
           phoneNumber: '03001231819',
           mail: 'maya@gmail.com',
-          driverID: 'B4545'
+          driverID: 'B4545',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'shlomo',
@@ -55,7 +63,9 @@ export const data = {
           licenceType: '1',
           phoneNumber: '03001232122',
           mail: 'namaya@gmail.com',
-          driverID: 'B4857'
+          driverID: 'B4857',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'roni',
@@ -66,7 +76,9 @@ export const data = {
           licenceType: '2',
           phoneNumber: '03001232324',
           mail: 'nodemand@gmail.com',
-          driverID: 'B9878'
+          driverID: 'B9878',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'yoni',
@@ -77,7 +89,9 @@ export const data = {
           licenceType: '2',
           phoneNumber: '03001232526',
           mail: 'noobfotall@gmail.com',
-          driverID: 'B5465'
+          driverID: 'B5465',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'avraham',
@@ -88,7 +102,9 @@ export const data = {
           licenceType: '3',
           phoneNumber: '03001232728',
           mail: 'killgoto@gmail.com',
-          driverID: 'B5456'
+          driverID: 'B5456',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'nuriel',
@@ -99,7 +115,9 @@ export const data = {
           licenceType: '1',
           phoneNumber: '03001232922',
           mail: 'babayaga@gmail.com',
-          driverID: 'B6666'
+          driverID: 'B6666',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'yoram',
@@ -110,7 +128,9 @@ export const data = {
           licenceType: '1',
           phoneNumber: '03001233031',
           mail: 'migaga@gmail.com',
-          driverID: 'B8758'
+          driverID: 'B8758',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'daniel',
@@ -121,7 +141,9 @@ export const data = {
           licenceType: '2',
           phoneNumber: '03001233233',
           mail: 'guliver@gmail.com',
-          driverID: 'B6395'
+          driverID: 'B6395',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'hen',
@@ -132,7 +154,9 @@ export const data = {
           licenceType: '3',
           phoneNumber: '03001233435',
           mail: 'gangrty@gmail.com',
-          driverID: 'B4142'
+          driverID: 'B4142',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'glad',
@@ -143,7 +167,9 @@ export const data = {
           licenceType: '1',
           phoneNumber: '03001233637',
           mail: 'glad@gmail.com',
-          driverID: 'B4425'
+          driverID: 'B4425',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'shem',
@@ -154,7 +180,9 @@ export const data = {
           licenceType: '2',
           phoneNumber: '03001233839',
           mail: 'shem@gmail.com',
-          driverID: 'B5563'
+          driverID: 'B5563',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'shimon',
@@ -165,7 +193,9 @@ export const data = {
           licenceType: '1',
           phoneNumber: '03001235568',
           mail: 'shimon@gmail.com',
-          driverID: 'B1158'
+          driverID: 'B1158',
+          lastReports: [],
+          tripStatus: false
         }
       ],
       vehicle: [
@@ -262,7 +292,7 @@ export const data = {
               dateModified: ''
             },
             lightStop: {
-              status: true
+              status: true,
               dateModified: ''
             },
             lightTail: {
@@ -6484,7 +6514,9 @@ export const data = {
           licenceType: '2',
           phoneNumber: '03008881213',
           mail: 'dorma@gmail.com',
-          driverID: 'C1321'
+          driverID: 'C1321',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'dav',
@@ -6495,7 +6527,9 @@ export const data = {
           licenceType: '2',
           phoneNumber: '03008881415',
           mail: 'vlimdfg@gmail.com',
-          driverID: 'C1232'
+          driverID: 'C1232',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'kakilovitch',
@@ -6506,7 +6540,9 @@ export const data = {
           licenceType: '2',
           phoneNumber: '03888231617',
           mail: 'vmavae@gmail.com',
-          driverID: 'C2121'
+          driverID: 'C2121',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'rafael',
@@ -6517,7 +6553,9 @@ export const data = {
           licenceType: '1',
           phoneNumber: '03001231888',
           mail: 'mamya@gmail.com',
-          driverID: 'C4545'
+          driverID: 'C4545',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'shabi',
@@ -6528,7 +6566,9 @@ export const data = {
           licenceType: '1',
           phoneNumber: '03008882122',
           mail: 'namayma@gmail.com',
-          driverID: 'C4857'
+          driverID: 'C4857',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'rovad',
@@ -6539,7 +6579,9 @@ export const data = {
           licenceType: '2',
           phoneNumber: '03008882324',
           mail: 'nodemanmd@gmail.com',
-          driverID: 'C9878'
+          driverID: 'C9878',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'yonnaan',
@@ -6550,7 +6592,9 @@ export const data = {
           licenceType: '2',
           phoneNumber: '03008882526',
           mail: 'noobfotalml@gmail.com',
-          driverID: 'C5465'
+          driverID: 'C5465',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'avrahamson',
@@ -6561,7 +6605,9 @@ export const data = {
           licenceType: '3',
           phoneNumber: '88801232728',
           mail: 'kilmlgoto@gmail.com',
-          driverID: 'C5456'
+          driverID: 'C5456',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'nurieli',
@@ -6572,7 +6618,9 @@ export const data = {
           licenceType: '1',
           phoneNumber: '03008882922',
           mail: 'babmymayaga@gmail.com',
-          driverID: 'C6666'
+          driverID: 'C6666',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'yoram',
@@ -6583,7 +6631,9 @@ export const data = {
           licenceType: '1',
           phoneNumber: '03001288831',
           mail: 'migagamy@gmail.com',
-          driverID: 'C8758'
+          driverID: 'C8758',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'gabi',
@@ -6594,7 +6644,9 @@ export const data = {
           licenceType: '2',
           phoneNumber: '03888233233',
           mail: 'gufrfrliver@gmail.com',
-          driverID: 'C6395'
+          driverID: 'C6395',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'haniel',
@@ -6605,7 +6657,9 @@ export const data = {
           licenceType: '3',
           phoneNumber: '03001238885',
           mail: 'gangrffty@gmail.com',
-          driverID: 'C4142'
+          driverID: 'C4142',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'hananel',
@@ -6616,7 +6670,9 @@ export const data = {
           licenceType: '1',
           phoneNumber: '03088833637',
           mail: 'gfflad@gmail.com',
-          driverID: 'C4425'
+          driverID: 'C4425',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'jhon',
@@ -6627,7 +6683,9 @@ export const data = {
           licenceType: '2',
           phoneNumber: '03001238889',
           mail: 'shemb@gmail.com',
-          driverID: 'C5563'
+          driverID: 'C5563',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'jeck',
@@ -6638,7 +6696,9 @@ export const data = {
           licenceType: '1',
           phoneNumber: '03008885568',
           mail: 'shimonDE@gmail.com',
-          driverID: 'C1158'
+          driverID: 'C1158',
+          lastReports: [],
+          tripStatus: false
         }
       ],
       vehicle: [
@@ -12956,7 +13016,9 @@ export const data = {
           licenceType: '2',
           phoneNumber: '03008721213',
           mail: 'dormXa@gmail.com',
-          driverID: 'CA1321'
+          driverID: 'CA1321',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'dora',
@@ -12967,7 +13029,9 @@ export const data = {
           licenceType: '2',
           phoneNumber: '03088172415',
           mail: 'vlimdfXg@gmail.com',
-          driverID: 'CA1232'
+          driverID: 'CA1232',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'katch',
@@ -12978,7 +13042,9 @@ export const data = {
           licenceType: '2',
           phoneNumber: '03728231617',
           mail: 'vmaXvae@gmail.com',
-          driverID: 'CA2121'
+          driverID: 'CA2121',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'ref',
@@ -12989,7 +13055,9 @@ export const data = {
           licenceType: '1',
           phoneNumber: '03001721888',
           mail: 'mamyXa@gmail.com',
-          driverID: 'CA4545'
+          driverID: 'CA4545',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'rif',
@@ -13000,7 +13068,9 @@ export const data = {
           licenceType: '1',
           phoneNumber: '03008887222',
           mail: 'namaymXa@gmail.com',
-          driverID: 'CA4857'
+          driverID: 'CA4857',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'donald',
@@ -13011,7 +13081,9 @@ export const data = {
           licenceType: '2',
           phoneNumber: '03007282324',
           mail: 'nodeXmanmd@gmail.com',
-          driverID: 'CA9878'
+          driverID: 'CA9878',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'yodn',
@@ -13022,7 +13094,9 @@ export const data = {
           licenceType: '2',
           phoneNumber: '03008882726',
           mail: 'noobfotaXlml@gmail.com',
-          driverID: 'CA5465'
+          driverID: 'CA5465',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'mtson',
@@ -13033,7 +13107,9 @@ export const data = {
           licenceType: '3',
           phoneNumber: '88807232728',
           mail: 'kilmXlgoto@gmail.com',
-          driverID: 'CA5456'
+          driverID: 'CA5456',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'mat',
@@ -13044,7 +13120,9 @@ export const data = {
           licenceType: '1',
           phoneNumber: '03008887222',
           mail: 'babmyXmayaga@gmail.com',
-          driverID: 'CA6666'
+          driverID: 'CA6666',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'ram',
@@ -13055,7 +13133,9 @@ export const data = {
           licenceType: '1',
           phoneNumber: '03001287231',
           mail: 'migagamXy@gmail.com',
-          driverID: 'CA8758'
+          driverID: 'CA8758',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'ford',
@@ -13066,7 +13146,9 @@ export const data = {
           licenceType: '2',
           phoneNumber: '72888233233',
           mail: 'Xgufrfrliver@gmail.com',
-          driverID: 'CA6395'
+          driverID: 'CA6395',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'hanan',
@@ -13077,7 +13159,9 @@ export const data = {
           licenceType: '3',
           phoneNumber: '03002712885',
           mail: 'ganXgrffty@gmail.com',
-          driverID: 'CA4142'
+          driverID: 'CA4142',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'hsdel',
@@ -13088,7 +13172,9 @@ export const data = {
           licenceType: '1',
           phoneNumber: '07288833637',
           mail: 'gXfflad@gmail.com',
-          driverID: 'CA4425'
+          driverID: 'CA4425',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'shrek',
@@ -13099,7 +13185,9 @@ export const data = {
           licenceType: '2',
           phoneNumber: '03007238889',
           mail: 'sheXmb@gmail.com',
-          driverID: 'CA5563'
+          driverID: 'CA5563',
+          lastReports: [],
+          tripStatus: false
         },
         {
           name: 'jeri',
@@ -13110,7 +13198,9 @@ export const data = {
           licenceType: '1',
           phoneNumber: '03728885568',
           mail: 'sXhimonDE@gmail.com',
-          driverID: 'CA1158'
+          driverID: 'CA1158',
+          lastReports: [],
+          tripStatus: false
         }
       ],
       vehicle: [
