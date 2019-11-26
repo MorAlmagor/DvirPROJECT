@@ -1,5 +1,5 @@
 // import { changeCheckStatus } from '../../store/actions/formActions';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 
 import React from 'react';
 import {
@@ -12,7 +12,12 @@ import {
 import { withNavigation } from 'react-navigation';
 import { getStringDate } from '../../utils/dateCreator';
 
-const FormIntroSection = ({ dvirStatus, navigation }) => {
+const FormIntroSection = ({
+  dvirStatus,
+  navigation,
+  carrier,
+  lastOdometer
+}) => {
   const dateString = getStringDate();
 
   // const [carrier, setCarrier] = useState(undefined);
@@ -25,14 +30,15 @@ const FormIntroSection = ({ dvirStatus, navigation }) => {
         <View style={{}}>
           <TextInput
             // onChangeText={(text) => onChangeText(text)}
-            // value={value}
-            placeholder="Carrier"
-            placeholderTextColor="grey"
+            value={carrier}
+            // placeholder="Carrier"
+            // placeholderTextColor="grey"
             style={styles.input}
-            autoCapitalize="none"
-            autoCompleteType="off"
-            autoCorrect={false}
-            blurOnSubmit
+            // autoCapitalize="none"
+            // autoCompleteType="off"
+            // autoCorrect={false}
+            // blurOnSubmit
+            editable={false}
           />
         </View>
         <View>
@@ -45,13 +51,14 @@ const FormIntroSection = ({ dvirStatus, navigation }) => {
         <View>
           <TextInput
             // onChangeText={(text) => onChangeText(text)}
-            // value={value}
-            placeholder="Odometer - Start"
-            placeholderTextColor="grey"
+            value={lastOdometer}
+            // placeholder="Odometer - Start"
+            // placeholderTextColor="grey"
             style={styles.input}
-            autoCapitalize="none"
-            autoCompleteType="off"
-            autoCorrect={false}
+            // autoCapitalize="none"
+            // autoCompleteType="off"
+            // autoCorrect={false}
+            keyboardType="numeric"
             blurOnSubmit
           />
         </View>
@@ -60,11 +67,12 @@ const FormIntroSection = ({ dvirStatus, navigation }) => {
             // onChangeText={(text) => onChangeDate(text)}
             value={dateString}
             // placeholder={dateValue}
-            placeholderTextColor="grey"
+            // placeholderTextColor="grey"
             style={styles.input}
-            autoCapitalize="none"
-            autoCompleteType="off"
-            autoCorrect={false}
+            // autoCapitalize="none"
+            // autoCompleteType="off"
+            // autoCorrect={false}
+            editable={false}
             blurOnSubmit
           />
         </View>
@@ -137,19 +145,17 @@ const styles = StyleSheet.create({
     color: 'grey'
   }
 });
+const mapStateToProps = (state) => {
+  return {
+    carrier: state.form.carrier,
+    lastOdometer: state.form.lastOdometer
+  };
+};
 
-// const mapStateToProps = (state) => {
-//   return {
-//     truckStatus: state.form.truckStatus
-//   };
-// };
+const mapDispatchToProps = () => {
+  return {
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     onChangeStatus: (keyId, value) => dispatch(changeCheckStatus(keyId, value))
-//   };
-// };
+  };
+};
 
-
-// export default connect(mapStateToProps, mapDispatchToProps)(CheckSwitch);
-export default withNavigation(FormIntroSection);
+export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(FormIntroSection));
