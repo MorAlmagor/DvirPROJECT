@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList} from 'react-native';
+import { FlatList } from 'react-native';
 import FormSection from './FormSection';
 
 const formSectionsList = [
@@ -171,7 +171,7 @@ const formSectionsList = [
         text: 'Suspension System'
       },
     ]
-  },{
+  }, {
     title: 'Safety',
     checkList: [
       {
@@ -249,7 +249,7 @@ const Form = () => {
       renderItem={({ item }) => {
         return <FormSection sectionInfo={item} />;
       }}
-    />  
+    />
   );
 };
 

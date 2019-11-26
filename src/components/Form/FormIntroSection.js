@@ -1,6 +1,7 @@
 // import { changeCheckStatus } from '../../store/actions/formActions';
 // import { connect } from 'react-redux';
-import React, { useState, useEffect } from 'react';
+
+import React, { useState } from 'react';
 import {
   View,
   TextInput,
@@ -8,10 +9,9 @@ import {
   TouchableOpacity,
   Text
 } from 'react-native';
+import { withNavigation } from 'react-navigation';
 
-
-const FormIntroSection = ({ dvirStatus, nav}) => {
-
+const FormIntroSection = ({ dvirStatus, navigation }) => {
   const d = new Date();
   const date = d.toString();
 
@@ -21,12 +21,12 @@ const FormIntroSection = ({ dvirStatus, nav}) => {
   const [dateValue = date, onChangeDate] = useState(undefined);
 
 
-  const inputSction = (
+  let inputSction = (
     <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
       <View style={{}}>
         <View style={{}}>
           <TextInput
-            onChangeText={(text) => onChangeText(text)}
+            // onChangeText={(text) => onChangeText(text)}
             // value={value}
             placeholder="Carrier"
             placeholderTextColor="grey"
@@ -38,7 +38,7 @@ const FormIntroSection = ({ dvirStatus, nav}) => {
           />
         </View>
         <View>
-          <TouchableOpacity onPress={() => nav.navigation.navigate('Map')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Map')}>
             <Text style={styles.ButtonInput}>dgdg</Text>
           </TouchableOpacity>
         </View>
@@ -46,7 +46,7 @@ const FormIntroSection = ({ dvirStatus, nav}) => {
       <View>
         <View>
           <TextInput
-            onChangeText={(text) => onChangeText(text)}
+            // onChangeText={(text) => onChangeText(text)}
             // value={value}
             placeholder="Odometer - Start"
             placeholderTextColor="grey"
@@ -79,8 +79,8 @@ const FormIntroSection = ({ dvirStatus, nav}) => {
       <View>
         <View>
           <TextInput
-            onChangeText={(text) => onChangeText(text)}
-            value={value}
+            // onChangeText={(text) => onChangeText(text)}
+            // value={value}
             // placeholder={placeholder}
             placeholderTextColor="grey"
             style={styles.input}
@@ -92,8 +92,8 @@ const FormIntroSection = ({ dvirStatus, nav}) => {
         </View>
         <View>
           <TextInput
-            onChangeText={(text) => onChangeText(text)}
-            value={value}
+            // onChangeText={(text) => onChangeText(text)}
+            // value={value}
             // placeholder={placeholder}
             placeholderTextColor="grey"
             style={styles.input}
@@ -154,4 +154,4 @@ const styles = StyleSheet.create({
 
 
 // export default connect(mapStateToProps, mapDispatchToProps)(CheckSwitch);
-export default FormIntroSection;
+export default withNavigation(FormIntroSection);

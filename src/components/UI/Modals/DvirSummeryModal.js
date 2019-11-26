@@ -3,11 +3,10 @@ import {
   View,
   StyleSheet,
   Text,
-  Button,
   Image
 } from 'react-native';
 import MainButton from '../Buttons/MainButton';
-import Colors from '../../../Colors/Colors'
+import Colors from '../../../Colors/Colors';
 // לא גמור בעליל //
 
 const DvirSummeryModal = (props) => {

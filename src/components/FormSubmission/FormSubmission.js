@@ -5,6 +5,7 @@ import {
   CheckBox,
   StyleSheet
 } from 'react-native';
+import { withNavigation } from 'react-navigation';
 import MainButton from '../UI/Buttons/MainButton';
 import Colors from '../../Colors/Colors';
 
@@ -15,7 +16,7 @@ const FormSubmission = ({
   clickedHandler,
   setCheckBoxHandler,
   clicked,
-  nav
+  navigation
 }) => {
   const submitHandler = () => {
     if (checkboxVal) {
@@ -39,7 +40,7 @@ const FormSubmission = ({
             style={styles.submitText}
           >By clicking the SUBMIT button, I confirm that I have read the
             <Text
-              onPress={() => nav.navigation.navigate('Terms')}
+              onPress={() => navigation.navigate('Terms')}
               style={styles.linkText}
             >Terms of Use
             </Text> and all the information I mentioned above is real
@@ -86,4 +87,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default FormSubmission;
+export default withNavigation(FormSubmission);
