@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
   locationDetails: {
-    locationName: null, 
+    locationName: null,
     coords: {
       longitude: null,
       latitude: null

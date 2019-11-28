@@ -14,9 +14,9 @@ export const setUserImage = (imageBase64) => {
   };
 };
 
-export const changeUserLocation = (latitude, longtitude) => {
+export const changeUserLocation = (latitude, longitude) => {
   return {
     type: actionTypes.CHANGE_USER_LOCATION,
-    payload: { latitude, longtitude }
+    payload: { latitude, longitude }
   };
 };

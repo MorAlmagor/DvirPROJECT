@@ -13,18 +13,17 @@ import MapView, { Marker } from 'react-native-maps';
 import { withNavigation } from 'react-navigation';
 import { changeUserLocation } from '../store/actions/formActions';
 
-const MapScreen = ({ navigation, onSelectedLocation }) => {
+const MapScreen = ({ navigation, onSelectedLocation, locationCoords }) => {
   const [location, setLocation] = useState();
   const [longitude, setLongitude] = useState();
   const [latitude, setLatitude] = useState();
   const [errMsg, setErrMsg] = useState();
   const [selectedlocation, setSlectedLocation] = useState(false);
-
+  console.log(locationCoords);
   useEffect(() => {
     getLocationAsync();
+    
   }, []);
-
-
   const getLocationAsync = async () => {
     const status = await Permissions.askAsync(Permissions.LOCATION);
     if (status !== 'granted') {
@@ -33,7 +32,10 @@ const MapScreen = ({ navigation, onSelectedLocation }) => {
       );
     }
 
-    const currentlocation = await Location.getCurrentPositionAsync({});
+    const currentlocation = await Location.getCurrentPositionAsync({
+      accuracy: Location.Accuracy.Highest
+    });
+
     setLocation(currentlocation);
     setLatitude(currentlocation.coords.latitude);
     setLongitude(currentlocation.coords.longitude);
@@ -54,7 +56,7 @@ const MapScreen = ({ navigation, onSelectedLocation }) => {
   }
 
   const SaveLocationHandler = () => {
-    onSelectedLocation(selectedlocation.latitud, selectedlocation.longitude);
+    onSelectedLocation(selectedlocation.latitude, selectedlocation.longitude);
     navigation.navigate('Dvir', { longtitude: selectedlocation.longitude, latitude: selectedlocation.latitude });
   };
   return (
@@ -73,10 +75,10 @@ const MapScreen = ({ navigation, onSelectedLocation }) => {
               }}
             >
               {selectedlocation && (
-              <Marker
-                title="Picked Location"
-                coordinate={markerCoordinates}
-              />
+                <Marker
+                  title="Picked Location"
+                  coordinate={markerCoordinates}
+                />
               )}
             </MapView>
           )
@@ -113,16 +115,16 @@ const styles = StyleSheet.create({
   }
 });
 
-// const mapStateToProps = (state) => {
-//   return {
-
-//   };
-// };
-
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
   return {
-    onSelectedLocation: (latitude, longtitude) => dispatch(changeUserLocation(latitude, longtitude))
+    locationCoords: state.form.locationDetails.coords
   };
 };
 
-export default connect(null, mapDispatchToProps)(withNavigation(MapScreen));
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSelectedLocation: (latitude, longitude) => dispatch(changeUserLocation(latitude, longitude))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(MapScreen));
