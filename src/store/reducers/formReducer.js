@@ -1,6 +1,13 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
+  locationDetails: {
+    locationName: null, 
+    coords: {
+      longitude: null,
+      latitude: null
+    }
+  },
   carrier: 'UPS',
   lastOdometer: '551',
   truckImage: null,
@@ -220,6 +227,13 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         truckImage: action.payload
+      };
+    case actionTypes.CHANGE_USER_LOCATION:
+      return {
+        ...state,
+        locationDetails: {
+          coords: action.payload
+        }
       };
 
     default: return state;

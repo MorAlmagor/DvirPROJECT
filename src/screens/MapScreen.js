@@ -1,61 +1,128 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from 'react';
 import {
-  Platform,
-  StyleSheet,
   Text,
   View,
-  Alert,
-  TouchableOpacity
-} from "react-native";
+  StyleSheet,
+  Dimensions,
+  Button
+} from 'react-native';
+import { connect } from 'react-redux';
+import * as Location from 'expo-location';
+import * as Permissions from 'expo-permissions';
+import MapView, { Marker } from 'react-native-maps';
+import { withNavigation } from 'react-navigation';
+import { changeUserLocation } from '../store/actions/formActions';
 
-export default class App extends Component {
-  state = {
-    location: undefined
+const MapScreen = ({ navigation, onSelectedLocation }) => {
+  const [location, setLocation] = useState();
+  const [longitude, setLongitude] = useState();
+  const [latitude, setLatitude] = useState();
+  const [errMsg, setErrMsg] = useState();
+  const [selectedlocation, setSlectedLocation] = useState(false);
+
+  useEffect(() => {
+    getLocationAsync();
+  }, []);
+
+
+  const getLocationAsync = async () => {
+    const status = await Permissions.askAsync(Permissions.LOCATION);
+    if (status !== 'granted') {
+      setErrMsg(
+        'Permission to access location was denied',
+      );
+    }
+
+    const currentlocation = await Location.getCurrentPositionAsync({});
+    setLocation(currentlocation);
+    setLatitude(currentlocation.coords.latitude);
+    setLongitude(currentlocation.coords.longitude);
   };
 
-  findCoordinates = () => {
-    navigator.geolocation.getCurrentPosition(
-      position => {
-        const location = JSON.stringify(position);
-        if (this.state.location === undefined){ 
-          this.setState({ location });
-        }else { 
-          alert.apply('yess')
-        }
-      },
-      error => Alert.alert(error.message),
-      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
-    );
+  const selectLocationHandler = (event) => {
+    setLatitude(event.nativeEvent.coordinate.latitude);
+    setLongitude(event.nativeEvent.coordinate.longitude);
+    setSlectedLocation(event.nativeEvent.coordinate);
   };
 
-  render() {
-    console.log(this.state.location)
-    return (
-      <View style={styles.container}>
-        <TouchableOpacity onPress={this.findCoordinates}>
-          <Text style={styles.welcome}>Find My Coords?</Text>
-          <Text>Location: {this.state.location}</Text>
-        </TouchableOpacity>
-      </View>
-    );
+  let markerCoordinates = false;
+  if (selectedlocation) {
+    markerCoordinates = {
+      latitude: selectedlocation.latitude,
+      longitude: selectedlocation.longitude
+    };
   }
-}
+
+  const SaveLocationHandler = () => {
+    onSelectedLocation(selectedlocation.latitud, selectedlocation.longitude);
+    navigation.navigate('Dvir', { longtitude: selectedlocation.longitude, latitude: selectedlocation.latitude });
+  };
+  return (
+    <View style={styles.container}>
+      <View style={styles.container}>
+        {latitude && longitude
+          ? (
+            <MapView
+              onPress={selectLocationHandler}
+              style={styles.mapStyle}
+              initialRegion={{
+                latitude,
+                longitude,
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421,
+              }}
+            >
+              {selectedlocation && (
+              <Marker
+                title="Picked Location"
+                coordinate={markerCoordinates}
+              />
+              )}
+            </MapView>
+          )
+          : <Text>wait...</Text>}
+      </View>
+      <View>
+        {!selectedlocation ? <Text style={styles.mapGuildText}>Place select your location</Text>
+          : <Button onPress={() => SaveLocationHandler()} title="Save The Location" />}
+      </View>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
+  paragraph: {
+    margin: 24,
+    fontSize: 18,
+    textAlign: 'center',
+  },
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#F5FCFF"
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  welcome: {
+  mapStyle: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
+  },
+  mapGuildText: {
     fontSize: 20,
-    textAlign: "center",
-    margin: 10
-  },
-  instructions: {
-    textAlign: "center",
-    color: "#333333",
-    marginBottom: 5
+    color: 'red',
+    fontWeight: 'bold'
   }
 });
+
+// const mapStateToProps = (state) => {
+//   return {
+
+//   };
+// };
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSelectedLocation: (latitude, longtitude) => dispatch(changeUserLocation(latitude, longtitude))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(withNavigation(MapScreen));

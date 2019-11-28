@@ -1,6 +1,5 @@
 // import { changeCheckStatus } from '../../store/actions/formActions';
 import { connect } from 'react-redux';
-
 import React from 'react';
 import {
   View,
@@ -16,14 +15,20 @@ const FormIntroSection = ({
   dvirStatus,
   navigation,
   carrier,
-  lastOdometer
+  lastOdometer,
+  // location
 }) => {
   const dateString = getStringDate();
+  // const InitialLocationToRedux = location.coords;
+  // console.log('FIS' + InitialLocationToRedux);
+
+  // const [longitude, setLongitude] = useState(location.coords.longitude);
+  // console.log(longitude);
 
   // const [carrier, setCarrier] = useState(undefined);
   // const [location, setLocation] = useState(undefined);
   // const [odometer, setOdometer] = useState(undefined);
-
+  
   let inputSction = (
     <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
       <View style={{}}>
@@ -152,10 +157,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = () => {
-  return {
+// const mapDispatchToProps = () => {
+//   return {
+    
+//   };
+// };
 
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(FormIntroSection));
+export default connect(mapStateToProps, null)(withNavigation(FormIntroSection));
