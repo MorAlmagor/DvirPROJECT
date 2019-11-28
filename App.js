@@ -21,7 +21,7 @@ const navigator = createStackNavigator({
   OpenApp: StartScreen
 },
 {
-  initialRouteName: 'Dvir',
+  initialRouteName: 'Camera',
   defaultNavigationOptions: {
     title: 'DVIR'
   }

@@ -4,7 +4,7 @@ import {
   View,
   StyleSheet,
   ScrollView,
-
+  Platform
 } from 'react-native';
 import { connect } from 'react-redux';
 import * as Location from 'expo-location';
@@ -80,7 +80,9 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 26,
     fontWeight: 'bold',
-    alignSelf: 'center'
+    alignSelf: 'center',
+    marginTop: 8,
+    fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto'
   }
 });
 

@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
+  Platform,
   StyleSheet
 } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons'
 import { connect } from 'react-redux';
 import * as Permissions from 'expo-permissions';
 import * as ImagePicker from 'expo-image-picker';
@@ -16,7 +18,7 @@ const CameraScreen = ({
   onSetImage
 }) => {
   const [permissions, setPermissions] = useState({ camera: null, cameraRoll: null });
-  
+
 
   const getPermissions = async () => {
     try {
@@ -65,11 +67,24 @@ const CameraScreen = ({
   return (
     <View style={styles.container}>
       <View>
-        <Text style={styles.userText}>Please Take Picture Of Front Of Your Vehicle</Text>
+        <Text style={styles.userText}>Please Take Picture Of The Front Of Your Vehicle</Text>
       </View>
       <View style={styles.buttonsContainer}>
-        <MainButton onpress={openCamRoll}>Gallery</MainButton>
-        <MainButton onpress={openCam}>Camera</MainButton>
+        <MainButton onpress={openCam}>{<FontAwesome name="camera" size={30} />}</MainButton>
+      </View>
+
+      <View >
+        <Text style={styles.divaider}>─────  or  ─────</Text>
+      </View>
+
+      <View style={styles.container1}>
+        <View>
+          <Text style={styles.userText}>Select A Photo from your Gallery</Text>
+        </View >
+        <View style={styles.buttonsContainer1}>
+          <MainButton onpress={openCamRoll}>{<FontAwesome name="image" size={30} />}</MainButton>
+        </View>
+
       </View>
     </View>
   );
@@ -77,20 +92,35 @@ const CameraScreen = ({
 
 const styles = StyleSheet.create({
   buttonsContainer: {
-    height: '70%',
+    height: '20%',
     justifyContent: 'space-around',
-    margin: '10%'
+    marginBottom: '12%'
   },
   container: {
     alignItems: 'center',
-    marginTop: '35%'
+    marginTop: '40%'
+  },
+  container1: {
+    alignItems: 'center',
+    marginBottom: '12%'
+  },
+  buttonsContainer1: {
+    justifyContent: 'space-around',
   },
   userText: {
-    fontSize: 25,
-    fontWeight: 'bold',
+    fontSize: 18,
     textAlign: 'center',
-    color: Colors.primary
-  }
+    paddingHorizontal: 18,
+    color: 'grey',
+    fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto'
+  },
+  divaider: {
+    fontSize: 20,
+    textAlign: 'center',
+    color: 'grey',
+    fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto',
+    marginBottom: '10%'
+    }
 });
 
 const mapDispatchToProps = (dispatch) => {

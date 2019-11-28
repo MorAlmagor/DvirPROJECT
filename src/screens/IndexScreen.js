@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Text,
   View,
+  Platform,
   StyleSheet
 } from 'react-native';
 import MainButton from '../components/UI/Buttons/MainButton';
@@ -37,6 +38,7 @@ const styles = StyleSheet.create({
   userNameText: {
     fontSize: 25,
     fontWeight: 'bold',
+    fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto',
     color: Colors.primary
   }
 });
