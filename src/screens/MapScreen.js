@@ -4,7 +4,8 @@ import {
   View,
   StyleSheet,
   Dimensions,
-  Button
+  Button,
+  Platform
 } from 'react-native';
 import { connect } from 'react-redux';
 import * as Location from 'expo-location';
@@ -12,6 +13,7 @@ import * as Permissions from 'expo-permissions';
 import MapView, { Marker } from 'react-native-maps';
 import { withNavigation } from 'react-navigation';
 import { changeUserLocation } from '../store/actions/formActions';
+import Colors from '../Colors/Colors'
 
 const MapScreen = ({ navigation, onSelectedLocation, locationCoords }) => {
   const [location, setLocation] = useState();
@@ -86,7 +88,7 @@ const MapScreen = ({ navigation, onSelectedLocation, locationCoords }) => {
       </View>
       <View>
         {!selectedlocation ? <Text style={styles.mapGuildText}>Place select your location</Text>
-          : <Button onPress={() => SaveLocationHandler()} title="Save The Location" />}
+          : <Button onPress={() => SaveLocationHandler()} title="Save Your Location" />}
       </View>
     </View>
   );
@@ -97,6 +99,7 @@ const styles = StyleSheet.create({
     margin: 24,
     fontSize: 18,
     textAlign: 'center',
+    fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto'
   },
   container: {
     flex: 1,
@@ -110,9 +113,16 @@ const styles = StyleSheet.create({
   },
   mapGuildText: {
     fontSize: 20,
-    color: 'red',
-    fontWeight: 'bold'
-  }
+    color: Colors.accent,
+    fontWeight: 'bold',
+    fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto',
+    bottom: 10
+  },
+  // btnStyle: {
+  //   color: Colors.primary,
+  //   borderRadius: 20,
+  //   fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto'
+  // }
 });
 
 const mapStateToProps = (state) => {
