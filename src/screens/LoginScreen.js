@@ -7,7 +7,8 @@ import {
   ScrollView,
   TouchableWithoutFeedback,
   Keyboard,
-  TextInput
+  TextInput,
+  Platform
 } from 'react-native';
 import MainButton from '../components/UI/Buttons/MainButton';
 import Colors from '../Colors/Colors';
@@ -60,15 +61,18 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
+    paddingTop: 12,
     justifyContent: 'center',
     marginBottom: Dimensions.get('window').height < 450 ? 280 : 200,
+    fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto'
   },
   textStyle: {
     fontSize: Dimensions.get('window').height < 450 ? 16 : 20,
     fontWeight: 'bold',
     color: Colors.primary,
-    padding: 30,
-    // fontFamily: Platform.OS === 'ios' ? 'Avenir-Black' : 'Roboto-Black'
+    paddingTop: Dimensions.get('window').height < 600 ? '60%' : '30%',
+    paddingVertical: '5%',
+    fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto'
   },
   input: {
     height: 50,
@@ -80,11 +84,12 @@ const styles = StyleSheet.create({
     borderRadius: 26,
     justifyContent: 'space-between',
     flexDirection: 'column',
-    // fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto'
+    fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto'
   },
   textWords: {
     color: 'grey',
-    // fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto'
+    fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto',
+    paddingBottom: 10
   }
 
 });

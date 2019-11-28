@@ -38,7 +38,9 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').width * 1,
   },
   image: {
-    bottom: 80
+    alignItems: 'center',
+    bottom: Dimensions.get('window').height < 500 ? 100 : 180,
+    
   }
 });
 
