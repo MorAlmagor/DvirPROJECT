@@ -10,73 +10,60 @@ import {
 } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { getStringDate } from '../../utils/dateCreator';
+import { changeDate, changeOdometer } from '../../store/actions/formActions';
 
 const FormIntroSection = ({
   dvirStatus,
   navigation,
   carrier,
   lastOdometer,
-  // location
+  onOdometerUpdate,
+  onDateUpdate,
+  choosenLocation
 }) => {
   const dateString = getStringDate();
-  // const InitialLocationToRedux = location.coords;
-  // console.log('FIS' + InitialLocationToRedux);
 
-  // const [longitude, setLongitude] = useState(location.coords.longitude);
-  // console.log(longitude);
+  onDateUpdate(dateString);
 
-  // const [carrier, setCarrier] = useState(undefined);
-  // const [location, setLocation] = useState(undefined);
-  // const [odometer, setOdometer] = useState(undefined);
-  
+  const onChangeText = (OdometerInputText) => {
+    onOdometerUpdate(OdometerInputText.replace(/[^0-9]/g, ''));
+  };
+
   let inputSction = (
     <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
       <View style={{}}>
         <View style={{}}>
           <TextInput
-            // onChangeText={(text) => onChangeText(text)}
             value={carrier}
-            // placeholder="Carrier"
-            // placeholderTextColor="grey"
             style={styles.input}
-            // autoCapitalize="none"
-            // autoCompleteType="off"
-            // autoCorrect={false}
-            // blurOnSubmit
+            autoCorrect={false}
             editable={false}
           />
         </View>
         <View>
           <TouchableOpacity onPress={() => navigation.navigate('Map')}>
-            <Text style={styles.ButtonInput}>dgdg</Text>
+            {!choosenLocation
+              ? <Text style={styles.locationDemiInputTextFalse}>Set Your Location</Text>
+              : <Text style={styles.locationDemiInputTextTrue}>Location set</Text>}
           </TouchableOpacity>
         </View>
       </View>
       <View>
         <View>
           <TextInput
-            // onChangeText={(text) => onChangeText(text)}
+            onChangeText={(text) => onChangeText(text)}
             value={lastOdometer}
-            // placeholder="Odometer - Start"
-            // placeholderTextColor="grey"
             style={styles.input}
-            // autoCapitalize="none"
-            // autoCompleteType="off"
-            // autoCorrect={false}
+            autoCompleteType="off"
+            autoCorrect={false}
             keyboardType="numeric"
             blurOnSubmit
           />
         </View>
         <View>
           <TextInput
-            // onChangeText={(text) => onChangeDate(text)}
             value={dateString}
-            // placeholder={dateValue}
-            // placeholderTextColor="grey"
             style={styles.input}
-            // autoCapitalize="none"
-            // autoCompleteType="off"
-            // autoCorrect={false}
             editable={false}
             blurOnSubmit
           />
@@ -148,19 +135,47 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flexDirection: 'column',
     color: 'grey'
+  },
+  locationDemiInputTextFalse: {
+    height: 40,
+    width: 180,
+    padding: 12,
+    top: 8,
+    marginVertical: 10,
+    borderColor: '#aa0061',
+    borderWidth: 1,
+    borderRadius: 26,
+    justifyContent: 'space-between',
+    flexDirection: 'column',
+    color: 'red'
+  },
+  locationDemiInputTextTrue: {
+    height: 40,
+    width: 180,
+    padding: 12,
+    top: 8,
+    marginVertical: 10,
+    borderColor: '#aa0061',
+    borderWidth: 1,
+    borderRadius: 26,
+    justifyContent: 'space-between',
+    flexDirection: 'column',
+    color: 'green'
   }
 });
 const mapStateToProps = (state) => {
   return {
     carrier: state.form.carrier,
-    lastOdometer: state.form.lastOdometer
+    lastOdometer: state.form.lastOdometer,
+    choosenLocation: state.form.locationDetails.coords.latitude
   };
 };
 
-// const mapDispatchToProps = () => {
-//   return {
-    
-//   };
-// };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onDateUpdate: (date) => dispatch(changeDate(date)),
+    onOdometerUpdate: (date) => dispatch(changeOdometer(date)),
+  };
+};
 
-export default connect(mapStateToProps, null)(withNavigation(FormIntroSection));
+export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(FormIntroSection));
