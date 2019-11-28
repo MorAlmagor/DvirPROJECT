@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   StyleSheet,
-  // Platform,
+  Platform,
   View,
   Dimensions,
   TouchableOpacity
@@ -20,8 +20,7 @@ const MainButton = ({ onpress, style, children }) => {
           style={{ ...styles.btnStyle, ...style }}
           textStyle={{
             fontSize: 17,
-          
-            // fontFamily: Platform.OS === 'ios' ? 'Avenir-Black' : 'Roboto-Black'
+            fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto'
           }}
           gradientBegin="#aa0061"
           gradientEnd="#6536FF"

@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: 'bold',
     color: Colors.primary,
-    alignContent: 'center',
+    marginHorizontal: '4%',
     paddingBottom: 4,
     paddingTop: 7,
     fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto'
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   termsView: {
     fontSize: 14,
     justifyContent: 'space-around',
-    marginHorizontal: '6%',
+    marginHorizontal: '4%',
     fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto'
   },
   text: {
