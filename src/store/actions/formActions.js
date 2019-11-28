@@ -20,3 +20,16 @@ export const changeUserLocation = (latitude, longitude) => {
     payload: { latitude, longitude }
   };
 };
+
+export const changeDate = (date) => {
+  return {
+    type: actionTypes.ON_DATE_UPDATE,
+    payload: date
+  };
+};
+export const changeOdometer = (newOdometer) => {
+  return {
+    type: actionTypes.ON_ODOMETER_UPDATE,
+    payload: newOdometer
+  };
+};

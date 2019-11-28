@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   Text,
   View,
@@ -7,8 +7,6 @@ import {
   Platform
 } from 'react-native';
 import { connect } from 'react-redux';
-import * as Location from 'expo-location';
-import * as Permissions from 'expo-permissions';
 import Form from '../components/Form/Form';
 import FormSubmission from '../components/FormSubmission/FormSubmission';
 import Modal from '../components/UI/Modals/DvirSummeryModal';
@@ -24,34 +22,11 @@ const IndexScreen = ({ navigation, truckProperties }) => {
   };
   
   
-  const [LocationState, setSelectedLocalionState] = useState(false);
   const [modalShow, setModalShow] = useState(false);
   const [checkBoxValue, setCheckBoxValue] = useState(false);
   const [clicked, setClicked] = useState(false);
-  const [errMsg, setErrMsg] = useState();
   
-  // לוקיישן שהמשתמש בחר
-  // const SelectedLocation = navigation.state.params;
-
   
-  useEffect(() => {
-    getLocationAsync();
-  }, []);
-
-
-  const getLocationAsync = async () => {
-    const status = await Permissions.askAsync(Permissions.LOCATION);
-    if (status !== 'granted') {
-      setErrMsg(
-        'Permission to access location was denied',
-      );
-    }
-
-    const currentlocation = await Location.getCurrentPositionAsync({});
-    setSelectedLocalionState(currentlocation);
-  };
-  
-  // console.log(LocationState);
   return (
     <ScrollView>
       <View>
@@ -60,7 +35,6 @@ const IndexScreen = ({ navigation, truckProperties }) => {
         <FormIntroSection
           truckProperties={truckProperties}
           dvirStatus={false}
-          location={LocationState}
         />
         <Form />
         <FormSubmission

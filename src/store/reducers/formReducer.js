@@ -1,6 +1,7 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
+  currentDate: '',
   locationDetails: {
     locationName: null,
     coords: {
@@ -234,6 +235,16 @@ const reducer = (state = initialState, action) => {
         locationDetails: {
           coords: action.payload
         }
+      };
+    case actionTypes.ON_DATE_UPDATE:
+      return {
+        ...state,
+        currentDate: action.payload
+      };
+    case actionTypes.ON_ODOMETER_UPDATE:
+      return {
+        ...state,
+        lastOdometer: action.payload
       };
 
     default: return state;
