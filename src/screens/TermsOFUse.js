@@ -3,7 +3,8 @@ import {
   Text,
   View,
   StyleSheet,
-  ScrollView
+  ScrollView,
+  Platform
 } from 'react-native';
 import MainButton from '../components/UI/Buttons/MainButton';
 import Colors from '../Colors/Colors';
@@ -77,18 +78,23 @@ const TermsOFUse = (props) => {
 
 const styles = StyleSheet.create({
   title: {
-    fontSize: 26,
+    fontSize: 22,
     fontWeight: 'bold',
     color: Colors.primary,
-    alignContent: 'center'
+    alignContent: 'center',
+    paddingBottom: 4,
+    paddingTop: 7,
+    fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto'
   },
   termsView: {
     fontSize: 14,
     justifyContent: 'space-around',
-    marginHorizontal: '2%'
+    marginHorizontal: '6%',
+    fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto'
   },
   text: {
-    marginVertical: 30
+    marginVertical: 30,
+    fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto'
   }
 
 });
