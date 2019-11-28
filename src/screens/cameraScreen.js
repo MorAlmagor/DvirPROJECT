@@ -24,7 +24,7 @@ const CameraScreen = ({
       const checkedStatus = status === 'granted';
       setPermissions({ camera: checkedStatus, cameraRoll: checkedStatus });
     } catch (error) {
-      console.error('Error');
+      // console.error('Error');
     }
   };
 
