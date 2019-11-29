@@ -3,43 +3,53 @@ import {
   Text,
   View,
   Platform,
-  StyleSheet
+  StyleSheet,
+  Image
 } from 'react-native';
 import MainButton from '../components/UI/Buttons/MainButton';
-import Colors from '../Colors/Colors';
 
 const IndexScreen = ({ userName, navigation }) => {
   return (
     <View style={styles.container}>
+    <Image
+          style={styles.image}
+          source={require('../../assets/ic_just.png')}
+          navigation={navigation}
+        />
       <Text style={styles.userNameText}>
         Hello {userName}
       </Text>
       <View style={styles.buttonsContainer}>
         
-        <MainButton onpress={() => navigation.navigate('Camera')}>Post-Trip</MainButton>
         <MainButton onpress={() => navigation.navigate('Camera')}>Pre-Trip</MainButton>
+        <MainButton onpress={() => navigation.navigate('Camera')}>Post-Trip</MainButton>
         <MainButton onpress={() => alert('comming Soon')}>Old-Reports</MainButton>
-
       </View>
-
-    </View>
+      </View>
   );
 };
 const styles = StyleSheet.create({
   buttonsContainer: {
-    height: '70%',
+    height: '50%',
     justifyContent: 'space-around',
-    margin: '10%'
+    marginTop: '10%'
   },
   container: {
     alignItems: 'center',
-    marginTop: '35%'
+    marginTop: '10%'
   },
   userNameText: {
     fontSize: 25,
     fontWeight: 'bold',
     fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto',
-    color: Colors.primary
+    color: '#222830',
+    top: '5%'
+  },
+  image: {
+    alignItems: 'center',
+    marginBottom: '5%',
+    borderRadius: 10
+    // bottom: Dimensions.get('window').height < 500 ? 100 : 180
   }
 });
 
