@@ -14,14 +14,14 @@ import MapView, { Marker } from 'react-native-maps';
 import { withNavigation } from 'react-navigation';
 import { changeUserLocation } from '../store/actions/formActions';
 import Colors from '../Colors/Colors'
-
+// לוקיישן קורדס
+//  להוסיף מרקר עדכני
 const MapScreen = ({ navigation, onSelectedLocation, locationCoords }) => {
   const [location, setLocation] = useState();
   const [longitude, setLongitude] = useState();
   const [latitude, setLatitude] = useState();
   const [errMsg, setErrMsg] = useState();
   const [selectedlocation, setSlectedLocation] = useState(false);
-  console.log(locationCoords);
   useEffect(() => {
     getLocationAsync();
     
