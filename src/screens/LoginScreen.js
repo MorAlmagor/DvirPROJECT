@@ -8,7 +8,8 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   TextInput,
-  Platform
+  Platform,
+  Image
 } from 'react-native';
 import MainButton from '../components/UI/Buttons/MainButton';
 import Colors from '../Colors/Colors';
@@ -23,6 +24,10 @@ const LoginScreen = () => {
         Keyboard.dismiss();
       }}
       >
+        <View style={styles.image}>
+          <Image
+            source={require('../../assets/ic_just.png')}
+          />
         <View style={styles.container}>
           <Text style={styles.textStyle}>SIGN UP</Text>
           <TextInput
@@ -51,6 +56,7 @@ const LoginScreen = () => {
             SIGN UP
           </MainButton>
         </View>
+        </View>
       </TouchableWithoutFeedback>
     </ScrollView>
   );
@@ -61,9 +67,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    paddingTop: 12,
     justifyContent: 'center',
-    marginBottom: Dimensions.get('window').height < 450 ? 280 : 200,
+    paddingBottom: '50%',
     fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto'
   },
   textStyle: {
@@ -90,8 +95,12 @@ const styles = StyleSheet.create({
     color: 'grey',
     fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto',
     paddingBottom: 10
+  },
+  image: {
+    alignItems: 'center',
+    marginTop: '10%',
+    borderRadius: 10
   }
-
 });
 
 export default LoginScreen;

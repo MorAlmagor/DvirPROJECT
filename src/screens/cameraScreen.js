@@ -3,7 +3,8 @@ import {
   View,
   Text,
   Platform,
-  StyleSheet
+  StyleSheet,
+  Image
 } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons'
 import { connect } from 'react-redux';
@@ -65,6 +66,11 @@ const CameraScreen = ({
   };
 
   return (
+    <View style={styles.image}>
+       <Image
+          source={require('../../assets/ic_just.png')}
+          navigation={navigation}
+        />
     <View style={styles.container}>
       <View>
         <Text style={styles.userText}>Please Take Picture Of The Front Of Your Vehicle</Text>
@@ -87,18 +93,21 @@ const CameraScreen = ({
 
       </View>
     </View>
+    </View>
+
   );
 };
 
 const styles = StyleSheet.create({
   buttonsContainer: {
-    height: '20%',
+    height: '10%',
     justifyContent: 'space-around',
-    marginBottom: '12%'
+    marginBottom: '8%',
+    paddingVertical: '10%'
   },
   container: {
     alignItems: 'center',
-    marginTop: '40%'
+    marginTop: '12%'
   },
   container1: {
     alignItems: 'center',
@@ -120,6 +129,11 @@ const styles = StyleSheet.create({
     color: 'grey',
     fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto',
     marginBottom: '10%'
+    },
+    image: {
+      alignItems: 'center',
+      marginTop: '10%',
+      borderRadius: 10
     }
 });
 

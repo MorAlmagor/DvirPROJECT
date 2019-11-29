@@ -40,7 +40,6 @@ const styles = StyleSheet.create({
   image: {
     alignItems: 'center',
     bottom: Dimensions.get('window').height < 500 ? 100 : 180,
-    
   }
 });
 
