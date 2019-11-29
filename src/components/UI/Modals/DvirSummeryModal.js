@@ -1,35 +1,64 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   StyleSheet,
   Text,
   Image
 } from 'react-native';
+import { connect } from 'react-redux';
 import MainButton from '../Buttons/MainButton';
 import Colors from '../../../Colors/Colors';
 // לא גמור בעליל //
 
-const DvirSummeryModal = (props) => {
+const DvirSummeryModal = ({ clean, modalshowHandler, truckStatus }) => {
+  let ans = [];
+  let ansToCheck = [];
+
+  useEffect(() => {
+    Object.keys(truckStatus).map((key) => {
+      return ansToCheck.push({ name: key, status: truckStatus[key].status });
+    });
+    for (let i = 0; i < ansToCheck.length; i += 1) {
+      if (!ansToCheck[i].status) {
+        ans.push(ansToCheck[i].name);
+      }
+    }
+    if (ans.length > 0) {
+      setIsFaults(true);
+    } else {
+      setIsFaults(false);
+    }
+    ans.map(ans => console.log(ans));
+  }, []);
+
+  const faultSummery = (
+    <View>
+      <View>
+        <Text>Reported fault summary</Text>
+      </View>
+      <View>
+        {/*  */}
+      </View>
+    </View>
+  );
+
   const [isfaults, setIsFaults] = useState(false);
-  const falutsIMG = (
+  const nofalutsIMG = (
     <View style={styles.imageContainer}>
       <Image style={styles.Image} source={require('../../../../assets/SteeringWheel.png')} />
     </View>
   );
- 
+
   return (
     <View style={styles.backdrop}>
       <View style={styles.modal}>
-        {isfaults
-          ? <Text>Reported fault summary</Text>
-          : <Text style={styles.noFaultsText}>There is no faults found, Drive Carefully</Text>}
-        {!isfaults && falutsIMG}
-        {/* {props.children} */}
+        {!isfaults ? <Text style={styles.noFaultsText}>There is no faults found, Drive Carefully</Text> : faultSummery}
+        {!isfaults && nofalutsIMG}
         <View style={styles.buttonsView}>
-          <MainButton onpress={() => props.clean()}>{isfaults ? 'I Confirm' : 'Ok'}</MainButton>
+          <MainButton onpress={() => clean()}>{isfaults ? 'I Confirm' : 'Ok'}</MainButton>
         </View>
         <View style={styles.buttonsView}>
-          <MainButton onpress={() => props.modalshowHandler(false)}>Go back</MainButton>
+          <MainButton onpress={() => modalshowHandler(false)}>Go back</MainButton>
         </View>
       </View>
     </View>
@@ -49,7 +78,7 @@ const styles = StyleSheet.create({
     borderBottomStartRadius: 20,
     borderColor: Colors.primary,
     borderWidth: 2
-    
+
   },
   buttonsView: {
     margin: 0
@@ -83,4 +112,17 @@ const styles = StyleSheet.create({
   }
 });
 
-export default DvirSummeryModal;
+const mapStateToProps = (state) => {
+  return {
+    truckStatus: state.form.truckStatus
+  };
+};
+
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+
+//   };
+// };
+
+
+export default connect(mapStateToProps, null)(DvirSummeryModal);

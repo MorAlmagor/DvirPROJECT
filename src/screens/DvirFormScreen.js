@@ -12,7 +12,6 @@ import FormSubmission from '../components/FormSubmission/FormSubmission';
 import Modal from '../components/UI/Modals/DvirSummeryModal';
 import FormIntroSection from '../components/Form/FormIntroSection';
 
-
 const IndexScreen = ({ navigation, truckProperties }) => {
   const cleanUpHandler = () => {
     setModalShow(false);
@@ -22,7 +21,9 @@ const IndexScreen = ({ navigation, truckProperties }) => {
   };
   
   
-  const [modalShow, setModalShow] = useState(false);
+  // modalShoeHansler => FALSE
+  // לא לשכוחחחחחחחחחחחחחח
+  const [modalShow, setModalShow] = useState(true);
   const [checkBoxValue, setCheckBoxValue] = useState(false);
   const [clicked, setClicked] = useState(false);
   

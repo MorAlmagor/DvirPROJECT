@@ -14,7 +14,7 @@ const initialState = {
   truckImage: null,
   truckStatus: {
     airCompresor: {
-      status: false,
+      status: true,
       dateModified: ''
     },
     airLines: {
@@ -216,6 +216,7 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.CHANGE_CHECK_STATUS:
       return {
+        ...state,
         truckStatus: {
           ...state.truckStatus,
           [action.payload]: {
@@ -246,6 +247,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         lastOdometer: action.payload
       };
+    
 
     default: return state;
   }
