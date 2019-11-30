@@ -3,11 +3,13 @@ import {
   View,
   StyleSheet,
   Text,
-  Image
+  Image,
+  Platform
 } from 'react-native';
 import { connect } from 'react-redux';
 import MainButton from '../Buttons/MainButton';
 import Colors from '../../../Colors/Colors';
+import { FlatList } from 'react-native-gesture-handler';
 // לא גמור בעליל //
 
 const DvirSummeryModal = ({ clean, modalshowHandler, truckStatus }) => {
@@ -34,10 +36,10 @@ const DvirSummeryModal = ({ clean, modalshowHandler, truckStatus }) => {
   const faultSummery = (
     <View>
       <View>
-        <Text>Reported fault summary</Text>
+        <Text style={styles.noFaultsText}>Reported fault summary</Text>
       </View>
       <View>
-        {/*  */}
+     {/* */}
       </View>
     </View>
   );
@@ -71,23 +73,25 @@ const styles = StyleSheet.create({
     position: 'absolute',
     backgroundColor: 'white',
     width: '87%',
-    padding: '2%',
+    padding: '10%',
     zIndex: 500,
-    top: '25%',
+    top: '15%',
     borderTopEndRadius: 20,
     borderBottomStartRadius: 20,
     borderColor: Colors.primary,
-    borderWidth: 2
-
+    borderWidth: 2,
+    fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto'
   },
   buttonsView: {
-    margin: 0
+    bottom: 15,
+    top: 5
   },
   noFaultsText: {
     textAlign: 'center',
-    fontSize: 26,
-    fontWeight: 'bold',
-    color: Colors.primary
+    fontSize: 22,
+    fontWeight: '400',
+    color: '#25282A',
+    fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto',
   },
   image: {
     width: 200,

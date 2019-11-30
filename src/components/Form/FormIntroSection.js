@@ -6,7 +6,8 @@ import {
   TextInput,
   StyleSheet,
   TouchableOpacity,
-  Text
+  Text,
+  Platform
 } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { getStringDate } from '../../utils/dateCreator';
@@ -30,7 +31,8 @@ const FormIntroSection = ({
   };
 
   let inputSction = (
-    <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
+    <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center',
+    paddingVertical: 10 }}>
       <View style={{}}>
         <View style={{}}>
           <TextInput
@@ -44,7 +46,7 @@ const FormIntroSection = ({
           <TouchableOpacity onPress={() => navigation.navigate('Map')}>
             {!choosenLocation
               ? <Text style={styles.locationDemiInputTextFalse}>Set Your Location</Text>
-              : <Text style={styles.locationDemiInputTextTrue}>Location set</Text>}
+              : <Text style={styles.locationDemiInputTextTrue}>Current Location</Text>}
           </TouchableOpacity>
         </View>
       </View>
@@ -115,26 +117,28 @@ const styles = StyleSheet.create({
     width: 180,
     padding: 12,
     top: 8,
-    marginVertical: 10,
+    marginVertical: 4,
     borderColor: '#aa0061',
     borderWidth: 1,
     borderRadius: 26,
     justifyContent: 'space-between',
     flexDirection: 'column',
-    // fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto'
+    fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto'
   },
   ButtonInput: {
     height: 40,
     width: 180,
     padding: 12,
     top: 8,
-    marginVertical: 10,
+    marginVertical: 4,
+    marginHorizontal: 12,
     borderColor: '#aa0061',
     borderWidth: 1,
     borderRadius: 26,
     justifyContent: 'space-between',
     flexDirection: 'column',
-    color: 'grey'
+    color: 'grey',
+    fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto'
   },
   locationDemiInputTextFalse: {
     height: 40,
@@ -147,7 +151,7 @@ const styles = StyleSheet.create({
     borderRadius: 26,
     justifyContent: 'space-between',
     flexDirection: 'column',
-    color: 'red'
+    color: 'grey'
   },
   locationDemiInputTextTrue: {
     height: 40,
@@ -160,7 +164,8 @@ const styles = StyleSheet.create({
     borderRadius: 26,
     justifyContent: 'space-between',
     flexDirection: 'column',
-    color: 'green'
+    color: 'black',
+    fontWeight: '500'
   }
 });
 const mapStateToProps = (state) => {
