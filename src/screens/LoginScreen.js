@@ -24,10 +24,10 @@ const LoginScreen = () => {
         Keyboard.dismiss();
       }}
       >
-        <View style={styles.image}>
+        {/* <View style={styles.image}>
           <Image
-            source={require('../../assets/ic_just.png')}
-          />
+            source={require('../../assets/ic_just3.png')}
+          /> */}
         <View style={styles.container}>
           <Text style={styles.textStyle}>SIGN UP</Text>
           <TextInput
@@ -56,7 +56,7 @@ const LoginScreen = () => {
             SIGN UP
           </MainButton>
         </View>
-        </View>
+        {/* </View> */}
       </TouchableWithoutFeedback>
     </ScrollView>
   );
@@ -65,6 +65,7 @@ const LoginScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    top: '10%',
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',

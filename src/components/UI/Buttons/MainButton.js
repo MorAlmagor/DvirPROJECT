@@ -36,10 +36,10 @@ const MainButton = ({ onpress, style, children }) => {
 const styles = StyleSheet.create({
   btnStyle: {
     paddingVertical: Dimensions.get('window').width > 600 ? 10 : 12,
-    paddingHorizontal: Dimensions.get('window').height > 600 ? 14 : 16,
+    paddingHorizontal: Dimensions.get('window').height > 600 ? 10 : 12,
     margin: 5,
     width: Dimensions.get('window').width > 600 ? 180 : 200,
-    maxWidth: '90%',
+    maxWidth: '80%',
     alignItems: 'center'
   },
   container: {

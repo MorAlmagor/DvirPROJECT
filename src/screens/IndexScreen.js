@@ -4,23 +4,16 @@ import {
   View,
   Platform,
   StyleSheet,
-  Image
 } from 'react-native';
 import MainButton from '../components/UI/Buttons/MainButton';
 
 const IndexScreen = ({ userName, navigation }) => {
   return (
     <View style={styles.container}>
-    <Image
-          style={styles.image}
-          source={require('../../assets/ic_just.png')}
-          navigation={navigation}
-        />
       <Text style={styles.userNameText}>
         Hello {userName}
       </Text>
       <View style={styles.buttonsContainer}>
-        
         <MainButton onpress={() => navigation.navigate('Camera')}>Pre-Trip</MainButton>
         <MainButton onpress={() => navigation.navigate('Camera')}>Post-Trip</MainButton>
         <MainButton onpress={() => alert('comming Soon')}>Old-Reports</MainButton>
@@ -32,7 +25,7 @@ const styles = StyleSheet.create({
   buttonsContainer: {
     height: '50%',
     justifyContent: 'space-around',
-    marginTop: '10%'
+    marginTop: '25%'
   },
   container: {
     alignItems: 'center',
@@ -40,10 +33,10 @@ const styles = StyleSheet.create({
   },
   userNameText: {
     fontSize: 25,
-    fontWeight: 'bold',
+    fontWeight: '600',
     fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto',
     color: '#222830',
-    top: '5%'
+    top: '15%'
   },
   image: {
     alignItems: 'center',

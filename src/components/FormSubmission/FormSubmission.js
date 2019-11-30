@@ -3,7 +3,8 @@ import {
   Text,
   View,
   CheckBox,
-  StyleSheet
+  StyleSheet,
+  Platform
 } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import MainButton from '../UI/Buttons/MainButton';
@@ -42,7 +43,7 @@ const FormSubmission = ({
             <Text
               onPress={() => navigation.navigate('Terms')}
               style={styles.linkText}
-            >Terms of Use
+            > Terms of Use
             </Text> and all the information I mentioned above is real
           </Text>
         </View>
@@ -56,30 +57,36 @@ const FormSubmission = ({
 
 const styles = StyleSheet.create({
   termsOfUseContainer: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    paddingTop: 6
   },
   termsOfUsealert: {
     textAlign: 'center',
     color: 'red',
-    fontSize: 16,
-    fontWeight: 'bold',
+    fontSize: 14,
+    fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto'
   },
   submitCheckbox: {
-    flex: 1
+    flex: 1,
+    paddingTop: 6,
+    paddingLeft: 2,
+    marginLeft: 6
   },
   submitTextView: {
-    flex: 9
+    flex: 9,
+    paddingTop: 10,
+    fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto'
   },
   submitText: {
     fontSize: 15,
-
+    fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto'
   },
   linkText: {
-    textDecorationLine: 'underline',
     textDecorationColor: Colors.primary,
     textDecorationStyle: 'solid',
     fontWeight: 'bold',
-    color: Colors.primary
+    color: Colors.primary,
+    fontFamily: Platform.OS === 'ios' ? 'Avenir' : 'Roboto'
   },
   btn: {
     zIndex: 100
