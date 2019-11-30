@@ -4,25 +4,25 @@ import {
   StyleSheet,
   Text,
   Image,
-  Platform
+  Platform,
+  FlatList
 } from 'react-native';
 import { connect } from 'react-redux';
 import MainButton from '../Buttons/MainButton';
 import Colors from '../../../Colors/Colors';
-import { FlatList } from 'react-native-gesture-handler';
 // לא גמור בעליל //
 
 const DvirSummeryModal = ({ clean, modalshowHandler, truckStatus }) => {
-  let ans = [];
-  let ansToCheck = [];
+  const ans = [];
+  const ansToCheck = [];
 
   useEffect(() => {
-    Object.keys(truckStatus).map((key) => {
-      return ansToCheck.push({ name: key, status: truckStatus[key].status });
+    Object.keys(truckStatus).map((key, index) => {
+      return ansToCheck.push({ name: key, status: truckStatus[key].status, pos: index });
     });
     for (let i = 0; i < ansToCheck.length; i += 1) {
       if (!ansToCheck[i].status) {
-        ans.push(ansToCheck[i].name);
+        ans.push(ansToCheck[i]);
       }
     }
     if (ans.length > 0) {
@@ -30,7 +30,7 @@ const DvirSummeryModal = ({ clean, modalshowHandler, truckStatus }) => {
     } else {
       setIsFaults(false);
     }
-    ans.map(ans => console.log(ans));
+    console.log(ans);
   }, []);
 
   const faultSummery = (
@@ -39,7 +39,11 @@ const DvirSummeryModal = ({ clean, modalshowHandler, truckStatus }) => {
         <Text style={styles.noFaultsText}>Reported fault summary</Text>
       </View>
       <View>
-     {/* */}
+        <FlatList
+          data={ans}
+          renderItem={({ item }) => <Text>{item.name}</Text>}
+          keyExtractor={(item) => item.pos}
+        />
       </View>
     </View>
   );
