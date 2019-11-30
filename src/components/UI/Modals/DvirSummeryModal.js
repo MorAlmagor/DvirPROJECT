@@ -4,25 +4,24 @@ import {
   StyleSheet,
   Text,
   Image,
-  Platform,
-  FlatList
+  Platform
 } from 'react-native';
 import { connect } from 'react-redux';
 import MainButton from '../Buttons/MainButton';
 import Colors from '../../../Colors/Colors';
-// לא גמור בעליל //
 
 const DvirSummeryModal = ({ clean, modalshowHandler, truckStatus }) => {
   const ans = [];
   const ansToCheck = [];
+  const [ListRender, setListRender] = useState();
 
   useEffect(() => {
-    Object.keys(truckStatus).map((key, index) => {
-      return ansToCheck.push({ name: key, status: truckStatus[key].status, pos: index });
+    Object.keys(truckStatus).map((key) => {
+      return ansToCheck.push({ name: truckStatus[key].keyId, status: truckStatus[key].status });
     });
     for (let i = 0; i < ansToCheck.length; i += 1) {
       if (!ansToCheck[i].status) {
-        ans.push(ansToCheck[i]);
+        ans.push(ansToCheck[i].name);
       }
     }
     if (ans.length > 0) {
@@ -30,7 +29,12 @@ const DvirSummeryModal = ({ clean, modalshowHandler, truckStatus }) => {
     } else {
       setIsFaults(false);
     }
-    console.log(ans);
+    const listToRender = (
+      <View>
+        {ans.map((fault) => <Text key={fault}>{fault}</Text>)}
+      </View>
+    );
+    setListRender(listToRender);
   }, []);
 
   const faultSummery = (
@@ -39,27 +43,26 @@ const DvirSummeryModal = ({ clean, modalshowHandler, truckStatus }) => {
         <Text style={styles.noFaultsText}>Reported fault summary</Text>
       </View>
       <View>
-        <FlatList
-          data={ans}
-          renderItem={({ item }) => <Text>{item.name}</Text>}
-          keyExtractor={(item) => item.pos}
-        />
+        {ListRender}
       </View>
     </View>
   );
 
   const [isfaults, setIsFaults] = useState(false);
-  const nofalutsIMG = (
+  const noFalutsIMG = (
     <View style={styles.imageContainer}>
       <Image style={styles.Image} source={require('../../../../assets/SteeringWheel.png')} />
     </View>
+  );
+  const noFalutsTest = (
+    <Text style={styles.noFaultsText}>There is no faults found, Drive Carefully</Text>
   );
 
   return (
     <View style={styles.backdrop}>
       <View style={styles.modal}>
-        {!isfaults ? <Text style={styles.noFaultsText}>There is no faults found, Drive Carefully</Text> : faultSummery}
-        {!isfaults && nofalutsIMG}
+        {!isfaults ? noFalutsTest : faultSummery}
+        {!isfaults && noFalutsIMG}
         <View style={styles.buttonsView}>
           <MainButton onpress={() => clean()}>{isfaults ? 'I Confirm' : 'Ok'}</MainButton>
         </View>

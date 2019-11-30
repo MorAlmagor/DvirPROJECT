@@ -14,16 +14,21 @@ import FormIntroSection from '../components/Form/FormIntroSection';
 
 const IndexScreen = ({ navigation, truckProperties }) => {
   const cleanUpHandler = () => {
+    submitForm();
     setModalShow(false);
     setCheckBoxValue(false);
     setClicked(false);
     navigation.navigate('Index');
   };
+
+  const submitForm = () => {
+    alert('submit');
+  };
   
   
   // modalShoeHansler => FALSE
   // לא לשכוחחחחחחחחחחחחחח
-  const [modalShow, setModalShow] = useState(true);
+  const [modalShow, setModalShow] = useState(false);
   const [checkBoxValue, setCheckBoxValue] = useState(false);
   const [clicked, setClicked] = useState(false);
   
