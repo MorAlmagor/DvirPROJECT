@@ -14,11 +14,11 @@ const initialState = {
   truckImage: null,
   truckStatus: {
     airCompresor: {
-      status: true,
+      status: false,
       dateModified: ''
     },
     airLines: {
-      status: true,
+      status: false,
       dateModified: ''
     },
     battery: {
