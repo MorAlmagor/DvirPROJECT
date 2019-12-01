@@ -12,10 +12,16 @@ const initialState = {
   carrier: 'UPS',
   lastOdometer: '551',
   truckImage: null,
+  trailer1: {
+
+  },
+  trailer2: {
+
+  },
   truckStatus: {
     airCompresor: {
       keyId: 'Air Compresor',
-      status: false,
+      status: true,
       dateModified: ''
     },
     airLines: {
@@ -269,6 +275,7 @@ const reducer = (state = initialState, action) => {
         truckStatus: {
           ...state.truckStatus,
           [action.payload]: {
+            ...state.truckStatus[action.payload],
             dateModified: new Date(),
             status: !state.truckStatus[action.payload].status
           }

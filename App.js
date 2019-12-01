@@ -24,7 +24,7 @@ const navigator = createStackNavigator({
   // Test: TestScreen לא למחוק מסך לניסיונות
 },
 {
-  initialRouteName: 'Dvir',
+  initialRouteName: 'Map',
   defaultNavigationOptions: {
     title: 'Just Drive'
   }

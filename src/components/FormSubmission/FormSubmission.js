@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {
   Text,
   View,
@@ -17,7 +18,8 @@ const FormSubmission = ({
   clickedHandler,
   setCheckBoxHandler,
   clicked,
-  navigation
+  navigation,
+  locationCoords
 }) => {
   const submitHandler = () => {
     if (checkboxVal) {
@@ -50,6 +52,8 @@ const FormSubmission = ({
       </View>
       {clicked && !checkboxVal
         && <Text style={styles.termsOfUsealert}>Please accept the terms of use to continue</Text>}
+      {clicked && !locationCoords.longitude
+        && <Text style={styles.termsOfUsealert}>Please Select Your Location</Text>}
       <MainButton onpress={submitHandler}>SUBMIT</MainButton>
     </View>
   );
@@ -93,5 +97,11 @@ const styles = StyleSheet.create({
   }
 });
 
+const mapStateToProps = (state) => {
+  return {
+    locationCoords: state.form.locationDetails.coords
+  };
+};
 
-export default withNavigation(FormSubmission);
+
+export default connect(mapStateToProps, null)(withNavigation(FormSubmission));
