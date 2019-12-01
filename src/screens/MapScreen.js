@@ -13,18 +13,15 @@ import * as Permissions from 'expo-permissions';
 import MapView, { Marker } from 'react-native-maps';
 import { withNavigation } from 'react-navigation';
 import { changeUserLocation } from '../store/actions/formActions';
-import Colors from '../Colors/Colors'
-// לוקיישן קורדס
-//  להוסיף מרקר עדכני
+import Colors from '../Colors/Colors';
+// הנדל errMsg
 const MapScreen = ({ navigation, onSelectedLocation, locationCoords }) => {
-  const [location, setLocation] = useState();
   const [longitude, setLongitude] = useState();
   const [latitude, setLatitude] = useState();
   const [errMsg, setErrMsg] = useState();
   const [selectedlocation, setSlectedLocation] = useState(false);
   useEffect(() => {
     getLocationAsync();
-    
   }, []);
   const getLocationAsync = async () => {
     const status = await Permissions.askAsync(Permissions.LOCATION);
@@ -38,12 +35,13 @@ const MapScreen = ({ navigation, onSelectedLocation, locationCoords }) => {
       accuracy: Location.Accuracy.Highest
     });
 
-    setLocation(currentlocation);
+    
     setLatitude(currentlocation.coords.latitude);
     setLongitude(currentlocation.coords.longitude);
   };
 
   const selectLocationHandler = (event) => {
+    onSelectedLocation(event.nativeEvent.coordinate.latitude, event.nativeEvent.coordinate.longitude);
     setLatitude(event.nativeEvent.coordinate.latitude);
     setLongitude(event.nativeEvent.coordinate.longitude);
     setSlectedLocation(event.nativeEvent.coordinate);
@@ -76,12 +74,10 @@ const MapScreen = ({ navigation, onSelectedLocation, locationCoords }) => {
                 longitudeDelta: 0.0421,
               }}
             >
-              {selectedlocation && (
-                <Marker
-                  title="Picked Location"
-                  coordinate={markerCoordinates}
-                />
-              )}
+
+              {locationCoords.longitude
+                ? <Marker title="Picked Location" coordinate={locationCoords} />
+                : selectedlocation && (<Marker title="Picked Location" coordinate={markerCoordinates} />)}
             </MapView>
           )
           : <Text>wait...</Text>}

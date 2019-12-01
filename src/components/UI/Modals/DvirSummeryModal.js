@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
   View,
   StyleSheet,
@@ -10,68 +10,55 @@ import { connect } from 'react-redux';
 import MainButton from '../Buttons/MainButton';
 import Colors from '../../../Colors/Colors';
 
+// eslint-disable-next-line consistent-return
 const DvirSummeryModal = ({ clean, modalshowHandler, truckStatus }) => {
   const ans = [];
   const ansToCheck = [];
-  const [ListRender, setListRender] = useState();
 
-  useEffect(() => {
-    Object.keys(truckStatus).map((key) => {
-      return ansToCheck.push({ name: truckStatus[key].keyId, status: truckStatus[key].status });
-    });
-    for (let i = 0; i < ansToCheck.length; i += 1) {
-      if (!ansToCheck[i].status) {
-        ans.push(ansToCheck[i].name);
-      }
+  Object.keys(truckStatus).map((key) => {
+    return ansToCheck.push({ name: truckStatus[key].keyId, status: truckStatus[key].status });
+  });
+  for (let i = 0; i < ansToCheck.length; i += 1) {
+    if (!ansToCheck[i].status) {
+      ans.push(ansToCheck[i].name);
     }
-    if (ans.length > 0) {
-      setIsFaults(true);
-    } else {
-      setIsFaults(false);
-    }
-    const listToRender = (
-      <View>
-        {ans.map((fault) => <Text key={fault}>{fault}</Text>)}
+  }
+  if (ans.length > 0) {
+    return (
+      <View style={styles.backdrop}>
+        <View style={styles.modal}>
+          <Text style={styles.noFaultsText}>Reported fault summary</Text>
+          <View>
+            {ans.map((fault) => <Text key={fault}>{fault}</Text>)}
+          </View>
+          <View style={styles.buttonsView}>
+            <MainButton onpress={() => clean()}>I Confirm</MainButton>
+          </View>
+          <View style={styles.buttonsView}>
+            <MainButton onpress={() => modalshowHandler(false)}>Go back</MainButton>
+          </View>
+        </View>
       </View>
     );
-    setListRender(listToRender);
-  }, []);
-
-  const faultSummery = (
-    <View>
-      <View>
-        <Text style={styles.noFaultsText}>Reported fault summary</Text>
-      </View>
-      <View>
-        {ListRender}
-      </View>
-    </View>
-  );
-
-  const [isfaults, setIsFaults] = useState(false);
-  const noFalutsIMG = (
-    <View style={styles.imageContainer}>
-      <Image style={styles.Image} source={require('../../../../assets/SteeringWheel.png')} />
-    </View>
-  );
-  const noFalutsTest = (
-    <Text style={styles.noFaultsText}>There is no faults found, Drive Carefully</Text>
-  );
-
-  return (
-    <View style={styles.backdrop}>
-      <View style={styles.modal}>
-        {!isfaults ? noFalutsTest : faultSummery}
-        {!isfaults && noFalutsIMG}
-        <View style={styles.buttonsView}>
-          <MainButton onpress={() => clean()}>{isfaults ? 'I Confirm' : 'Ok'}</MainButton>
-        </View>
-        <View style={styles.buttonsView}>
-          <MainButton onpress={() => modalshowHandler(false)}>Go back</MainButton>
+  }
+  if (ans.length === 0) {
+    return (
+      <View style={styles.backdrop}>
+        <View style={styles.modal}>
+          <Text style={styles.noFaultsText}>There is no faults found, Drive Carefully</Text>
+          <View style={styles.imageContainer}>
+            <Image style={styles.Image} source={require('../../../../assets/SteeringWheel.png')} />
+          </View>
+          <View style={styles.buttonsView}>
+            <MainButton onpress={() => clean()}>Ok</MainButton>
+          </View>
+          <View style={styles.buttonsView}>
+            <MainButton onpress={() => modalshowHandler(false)}>Go back</MainButton>
+          </View>
         </View>
       </View>
-    </View>
-  );
+    );
+  }
 };
 
 const styles = StyleSheet.create({
